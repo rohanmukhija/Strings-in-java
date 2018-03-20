@@ -1,0 +1,9 @@
+Generally, a StringBuffer is more efficient than a String in string handling. However, this is not necessarily the case, since a StringBuffer will be required to recreate its character array when it runs out of space. Theoretically, this is possible to happen the same number of times as a new String would be required, although this is unlikely (and the programmer can provide length hints to prevent this). Either way, the effect is not noticeable in modern desktop computers.
+
+As well, the shortcomings of arrays are inherent in a StringBuffer. In order to insert or remove characters at arbitrary positions, whole sections of arrays must be moved.
+
+The method by which a StringBuffer is attractive in an environment with low processing power takes this ability by using too much memory, which is likely also at a premium in this environment. This point, however, is trivial, considering the space required for creating many instances of Strings in order to process them. As well, the StringBuffer can be optimized to "waste" as little memory as possible.
+
+The StringBuilder class, introduced in J2SE 5.0, differs from StringBuffer in that it is unsynchronized. When only a single thread at a time will access the object, using a StringBuilder processes more efficiently than using a StringBuffer.
+
+StringBuffer and StringBuilder are included in the java.lang package
