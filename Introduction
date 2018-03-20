@@ -1,0 +1,10 @@
+Java's standard way to handle text is to use its String class. Any given String in Java is an immutable object, which means its state cannot be changed. A String has an array of characters. Whenever a String must be manipulated, any changes require the creation of a new String (which, in turn, involves the creation of a new array of characters, and copying of the original array). This happens even if the original String's value or intermediate Strings used for the manipulation are not kept.
+
+Java provides two alternate classes for string manipulation, called StringBuffer and StringBuilder. Both of these, like String, each has an array to hold characters. They, however, are mutable (its state can be altered). Their array of characters is not necessarily completely filled (as opposed to a String, whose array is always the exact required length for its contents). Thus, a StringBuffer or StringBuilder has the capability to add, remove, or change its state without creating a new object (and without the creation of a new array, and array copying). The exception to this is when its array is no longer of suitable length to hold its content (a case which rarely happens because of the default Dynamic memory allocation provided by the JVM). In this case, it is required to create a new array, and copy the contents.
+
+For these reasons, Java would handle an expression like
+
+String newString = aString + anInt + aChar + aDouble;
+like this:
+
+String newString = (new StringBuilder(aString)).append(anInt).append(aChar).append(aDouble).toString();
